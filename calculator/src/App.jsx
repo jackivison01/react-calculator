@@ -37,18 +37,18 @@ function OperatorButtons({ onOperatorClick }) {
         <Button value="-" onClick={onOperatorClick}>-</Button>
         <Button value="*" onClick={onOperatorClick}>*</Button>
         <Button value="/" onClick={onOperatorClick}>/</Button>
-        <Button value="=" onClick={onOperatorClick}>/</Button>
-        <Button value="C" onClick={onOperatorClick}>/</Button>
       </div>
     </div>
   );
 }
 
-function Buttons({ onNumberClick, onOperatorClick }) {
+function Buttons({ onNumberClick, onOperatorClick, onClearClick, onEqualClick }) {
   return (
     <div className="buttons-container">
       <NumberButtons onNumberClick={onNumberClick} />
       <OperatorButtons onOperatorClick={onOperatorClick} />
+      <Button value="=" onClick={onEqualClick}>/</Button>
+      <Button value="C" onClick={onClearClick}>/</Button>
     </div>
   );
 }
@@ -86,6 +86,40 @@ export default function Calculator() {
     setOperator(null);
   }
 
+  const handleEqualClick = () => {
+    if (previousValue !== null && currentValue !== '' && operator) {
+      const num1 = parseFloat(previousValue);
+      const num2 = parseFloat(currentValue);
+
+      let result;
+      switch (operator) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          if (num2 === 0) {
+            result = 'Error, cannot divide by zero';
+          } else {
+            result = num1 / num2;
+          }
+          break;
+        default:
+          result = 0;
+      }
+
+      setCurrentValue(result.toString());
+      setPreviousValue(null);
+      setOperator(null);
+      console.log(result);
+    }
+  }
+
   return (
     <>
       <Display value={currentValue || '0'} />
@@ -93,6 +127,7 @@ export default function Calculator() {
         onNumberClick={handleNumberClick}
         onOperatorClick={handleOperatorClick}
         onClearClick={handleClearClick}
+        onEqualClick={handleEqualClick}
       />
     </>
   );
