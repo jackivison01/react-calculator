@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +42,39 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  /* Space between the two sections */
+}
+
+.number-buttons,
+.operator-buttons {
+  display: grid;
+  gap: 10px;
+  /* Space between rows in each section */
+}
+
+.number-buttons {
+  grid-template-columns: repeat(3, auto);
+  /* 3 buttons per row */
+}
+
+.operator-buttons {
+  grid-template-columns: auto;
+  /* Single column for operators */
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: lightgray;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: darkgray;
 }

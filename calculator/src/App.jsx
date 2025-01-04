@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function Display() {
+  return <div>Display Here</div>; // Example placeholder for display
 }
 
-export default App
+function NumberButtons() {
+  return (
+    <div className="number-buttons">
+      <div>
+        <Button value="7">7</Button>
+        <Button value="8">8</Button>
+        <Button value="9">9</Button>
+      </div>
+      <div>
+        <Button value="4">4</Button>
+        <Button value="5">5</Button>
+        <Button value="6">6</Button>
+      </div>
+      <div>
+        <Button value="1">1</Button>
+        <Button value="2">2</Button>
+        <Button value="3">3</Button>
+      </div>
+      <div>
+        <Button value="0">0</Button>
+      </div>
+    </div>
+  );
+}
+
+function OperatorButtons() {
+  return (
+    <div className="operator-buttons">
+      <div>
+        <Button value="+">+</Button>
+      </div>
+      <div>
+        <Button value="-">-</Button>
+      </div>
+      <div>
+        <Button value="*">*</Button>
+      </div>
+      <div>
+        <Button value="/">/</Button>
+      </div>
+    </div>
+  );
+}
+
+function Buttons() {
+  return (
+    <div className="buttons-container">
+      <NumberButtons />
+      <OperatorButtons />
+    </div>
+  );
+}
+
+function Button({ value }) {
+  return <button>{value}</button>;
+}
+
+export default function Calculator() {
+  return (
+    <>
+      <Display />
+      <Buttons />
+    </>
+  );
+}
