@@ -38,6 +38,7 @@ function OperatorButtons({ onOperatorClick }) {
         <Button value="*" onClick={onOperatorClick}>*</Button>
         <Button value="/" onClick={onOperatorClick}>/</Button>
         <Button value="=" onClick={onOperatorClick}>/</Button>
+        <Button value="C" onClick={onOperatorClick}>/</Button>
       </div>
     </div>
   );
@@ -79,10 +80,20 @@ export default function Calculator() {
     console.log(op)
   }
 
+  const handleClearClick = () => {
+    setCurrentValue('');
+    setPreviousValue(null);
+    setOperator(null);
+  }
+
   return (
     <>
       <Display value={currentValue || '0'} />
-      <Buttons onNumberClick={handleNumberClick} onOperatorClick={handleOperatorClick} />
+      <Buttons
+        onNumberClick={handleNumberClick}
+        onOperatorClick={handleOperatorClick}
+        onClearClick={handleClearClick}
+      />
     </>
   );
 }
