@@ -34,15 +34,10 @@ function OperatorButtons({ onOperatorClick }) {
     <div className="operator-buttons">
       <div>
         <Button value="+" onClick={onOperatorClick}>+</Button>
-      </div>
-      <div>
         <Button value="-" onClick={onOperatorClick}>-</Button>
-      </div>
-      <div>
         <Button value="*" onClick={onOperatorClick}>*</Button>
-      </div>
-      <div>
         <Button value="/" onClick={onOperatorClick}>/</Button>
+        <Button value="=" onClick={onOperatorClick}>/</Button>
       </div>
     </div>
   );
