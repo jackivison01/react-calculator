@@ -67,6 +67,10 @@ export default function Calculator() {
   const [operator, setOperator] = useState(null);
 
   const handleNumberClick = (number) => {
+    const operators = ['+', '-', '*', '/'];
+    if (operators.includes(currentValue)) {
+      setCurrentValue('')
+    }
     setCurrentValue((prev) => prev + number);
     console.log(number);
   };
@@ -74,7 +78,7 @@ export default function Calculator() {
   const handleOperatorClick = (op) => {
     if (currentValue !== '') {
       setPreviousValue(currentValue);
-      setCurrentValue('');
+      setCurrentValue(op);
       setOperator(op);
     }
     console.log(op)
